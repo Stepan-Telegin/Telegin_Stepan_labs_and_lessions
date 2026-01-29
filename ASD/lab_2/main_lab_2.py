@@ -18,9 +18,6 @@ class Point:
             return False
         return abs(self.x - other.x) < EPS and abs(self.y - other.y) < EPS
 
-    def __hash__(self):
-        return hash((round(self.x, 6), round(self.y, 6)))
-
 
 @dataclass
 class Line:
@@ -164,50 +161,32 @@ def segment_segment_intersection(seg1: Segment, seg2: Segment) -> list[Point]:
 
 
 def line_circle_intersection(line: Line, circle: Circle) -> list[Point]:
-    """
-    Пересечение прямой и окружности.
-
-    Прямая параметрически: P(t) = P1 + t · (P2 - P1), где t ∈ ℝ
-    Окружность: (x - cx)² + (y - cy)² = r²
-
-    Подставляем прямую в окружность → квадратное уравнение at² + bt + c = 0
-    """
-    # Исходные данные
     P1 = line.p1
     P2 = line.p2
     C = circle.center
     r = circle.radius
 
-    # Направляющий вектор прямой: d = P2 - P1
     dx = P2.x - P1.x
     dy = P2.y - P1.y
 
-    # Вектор от центра окружности к началу прямой: f = P1 - C
     fx = P1.x - C.x
     fy = P1.y - C.y
 
-    # Коэффициенты квадратного уравнения at² + bt + c = 0
-    # Получаются подстановкой P(t) в уравнение окружности
-    a = dx * dx + dy * dy  # |d|²
-    b = 2 * (fx * dx + fy * dy)  # 2(f · d)
-    c = fx * fx + fy * fy - r * r  # |f|² - r²
+    a = dx * dx + dy * dy
+    b = 2 * (fx * dx + fy * dy)
+    c = fx * fx + fy * fy - r * r
 
-    # Дискриминант
     discriminant = b * b - 4 * a * c
 
-    # Анализ дискриминанта
     if discriminant < -EPS:
-        # D < 0: прямая не пересекает окружность
         return []
 
     if abs(discriminant) < EPS:
-        # D = 0: прямая касается окружности (одна точка)
         t = -b / (2 * a)
         x = P1.x + t * dx
         y = P1.y + t * dy
         return [Point(x, y)]
 
-    # D > 0: прямая пересекает окружность (две точки)
     sqrt_D = math.sqrt(discriminant)
 
     t1 = (-b - sqrt_D) / (2 * a)
