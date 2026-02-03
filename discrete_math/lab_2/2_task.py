@@ -2,7 +2,7 @@ def task_2():
 
     x_sequence = [2, 4, 5]
     
-    target_index = 10
+    target_index = 20
     a=-2
     b=9
     c=18

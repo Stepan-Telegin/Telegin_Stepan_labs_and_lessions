@@ -30,8 +30,8 @@ def print_grid(title, matrix, W, H):
 
 
 def solve_task_5():
-    W = 6 # 22
-    H = 4 # 18
+    W = 22
+    H = 18
 
     dp1 = [[0 for _ in range(W + 1)] for _ in range(H + 1)]
     dp1[0][0] = 1

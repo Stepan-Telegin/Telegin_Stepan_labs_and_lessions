@@ -165,7 +165,7 @@ def search_with_kmp(filename, pattern):
 
 if __name__ == "__main__":
     target_pattern: str = input("Введите строку для поиска (образец): ")
-    file_path: str = "labs_3_4_5/text.txt"
+    file_path: str = "C:/Users/user/Documents/GitHub/Telegin_Stepan_labs_and_lessions/ASD/labs_3_4_5/text.txt"
 
     search_with_automaton(file_path, target_pattern)
 
