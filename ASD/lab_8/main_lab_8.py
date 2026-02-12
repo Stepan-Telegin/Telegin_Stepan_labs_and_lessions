@@ -1,15 +1,15 @@
 def count_change_ways(coins, target_sum):
-    arr = [0] * (target_sum + 1)
+    amounts = [0] * (target_sum + 1)
 
-    arr[0] = 1
+    amounts[0] = 1
 
     for coin in coins:
         for current_amount in range(coin, target_sum + 1):
 
             previous_amount = current_amount - coin
-            arr[current_amount] += arr[previous_amount]
+            amounts[current_amount] += amounts[previous_amount]
 
-    return arr[target_sum]
+    return amounts[target_sum]
 
 
 if __name__ == "__main__":

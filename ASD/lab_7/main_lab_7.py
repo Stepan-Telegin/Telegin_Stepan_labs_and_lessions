@@ -1,7 +1,8 @@
 def solve_max_subarray():
     try:
-        with open("lab_7/input.txt", "r", encoding="utf-8") as f:
-            nums = [int(x) for x in f.read().split()]
+        path = "C:/Users/user/Documents/GitHub/Telegin_Stepan_labs_and_lessions/ASD/lab_7/input.txt"
+        with open(path, "r", encoding="utf-8") as f:
+            nums = [float(x) for x in f.read().split()]
     except FileNotFoundError:
         print("Файл input.txt не найден.")
         return
