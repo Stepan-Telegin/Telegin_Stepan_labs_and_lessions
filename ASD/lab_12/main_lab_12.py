@@ -35,9 +35,9 @@ def solve_backpack(capacity, weights, values):
     return max_value, selected_items_indices
 
 
-item_weights = [2, 3, 5, 7]
-item_values = [10, 15, 20, 25]
-backpack_capacity = 8
+item_weights = [2, 3, 5, 7] # до 100000 100000 сумма всех весов <= 200000
+item_values = [10, 15, 20, 25] # = 1
+backpack_capacity = 100000
 
 max_val, taken_items = solve_backpack(backpack_capacity, item_weights, item_values)
 
