@@ -5,13 +5,14 @@ with open("input_text.txt", "r", encoding="utf-8") as f:
     raw_text = f.read()
 
 
-def normalize(s: str) -> str:
-    s = s.lower()
-    s = re.sub(r"[^a-z]+", " ", s) # всё что не латинская буква a..z заменяем на пробел
-    s = re.sub(r"\s+", " ", s).strip() # два и более пробела собираем в один
-    return s
+# def normalize(s: str) -> str:
+#     s = s.lower()
+#     s = re.sub(r"[^a-z]+", " ", s) # всё что не латинская буква a..z заменяем на пробел
+#     s = re.sub(r"\s+", " ", s).strip() # два и более пробела собираем в один
+#     return s
 
-text = normalize(raw_text)
+# text = normalize(raw_text)
+text = raw_text
 
 N = len(text)
 alphabet = sorted(set(text)) # отсортированное множество уникальных символов в тексте

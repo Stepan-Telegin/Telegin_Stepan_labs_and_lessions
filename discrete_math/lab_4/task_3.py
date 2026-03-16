@@ -101,7 +101,7 @@ def main():
         f"Избыточность относительно N*H: {lzw_total_bits - shannon_information:.2f} бит"
     )
 
-    print("\nПервые индексы LZW (для контроля):")
+    print("\nПервые индексы LZW:")
     print(lzw_codes[:30])
 
     def decode_entry(entry_index: int) -> str:
@@ -125,7 +125,7 @@ def main():
             f.write(f"{code:0{lzw_code_width}b}")
 
     print(f"\nДвоичный поток LZW записан в файл: {output_path}")
-    print(f"Первые {min(120, lzw_total_bits)} бит (для контроля):")
+    print(f"Первые {min(120, lzw_total_bits)} бит:")
     with open(output_path, "r", encoding="utf-8") as f:
         print(f.read(120))
 
