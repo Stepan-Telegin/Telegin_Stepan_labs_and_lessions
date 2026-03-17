@@ -113,3 +113,8 @@ if __name__ == "__main__":
     print("\nЭнтропия Шеннона:", entropy)
 
     print("Средняя длина кода Хаффмана:", huffman_length / len(lab4_text))
+
+    with open("huffman_encoded.txt", "w", encoding="utf-8") as f:
+        f.write(encoded)
+
+    print(f"\nЗакодированный текст записан в файл: huffman_encoded.txt")
