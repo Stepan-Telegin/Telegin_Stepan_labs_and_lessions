@@ -9,6 +9,11 @@ A = np.array([
 
 b = np.array([-19.0, -13.0, -5.0, -6.0])
 
+# Точное решение для проверки и сравнения
+x_exact = np.linalg.solve(A, b)
+print(f"--- Точное решение x* ---")
+print(f"  x* = {x_exact}\n")
+
 S = A.T @ A
 f = A.T @ b
 
@@ -57,17 +62,18 @@ def solve_iterations(eps):
     return x_cur, step, N_apr, delta
 
 
-# Вычисляем приближения для двух требуемых точностей
+# Вычисляем приближения для двух требуемых точностей и сравниваем с точным
 for eps in [1e-2, 1e-4]:
     sol, steps, N_apr, delta = solve_iterations(eps)
+
+    # Сравнение с точным решением
+    actual_error = np.linalg.norm(sol - x_exact)
+
     print(f"\n================ Результаты для eps = {eps} ================")
-    print(f"Априорная оценка числа шагов N_apr : {N_apr}")
-    print(f"Фактически сделано итераций        : {steps}")
-    print(f"Апостериорная погрешность Delta     : {delta:.8f}")
+    print(f"Априорная оценка числа шагов N_apr: {N_apr}")
+    print(f"Фактически сделано итераций: {steps}")
+    print(f"Апостериорная оценка погрешности: {delta:.8f}")
     print(
         f"Приближенное решение x:\n  x1 = {sol[0]:.6f}\n  x2 = {sol[1]:.6f}\n  x3 = {sol[2]:.6f}\n  x4 = {sol[3]:.6f}")
-
-# Точное решение для проверки
-x_exact = np.linalg.solve(A, b)
-print(f"\n--- Точное решение ---")
-print(f"  x* = {x_exact}")
+    print(f"Сравнение с точным решением:")
+    print(f"rho(x, x*) = {actual_error:.8f} <= {eps} (Условие выполнено: {actual_error <= eps})")

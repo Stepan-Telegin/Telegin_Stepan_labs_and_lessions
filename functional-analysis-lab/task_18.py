@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
+ж
 eps = 0.01
 k = 0.75
 rho_01 = 3.0
